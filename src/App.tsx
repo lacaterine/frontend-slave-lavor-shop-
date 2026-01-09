@@ -1,34 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { ProductCard } from './components/ProductCard.tsx'
+import { CartSummary} from './components/CartSummary.tsx'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const products = [
+    {id : 1, name : 'book', price : 10},
+    {id : 2, name : 'desk', price : 22},
+    {id : 3, name : 'pencil', price : 2}
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <CartSummary/>
+      {products.map(p => (
+        <ProductCard key={p.id} product={p}/>
+      ))}
+    </div>
   )
 }
 
