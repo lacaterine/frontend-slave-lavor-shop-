@@ -17,6 +17,16 @@ class CartStore {
         this.items.push(item);
         this.notify();
     }
+    removeItem(itemId: number)
+    {
+        this.items = this.items.filter(item => item.id !== itemId);
+        this.notify();
+    }
+    clearCart()
+    {
+        this.items = [];
+        this.notify();
+    }
     getItems()
     {
         return [...this.items];

@@ -16,8 +16,10 @@ export function useCart()
   }, [cart]);
 
   return {
-    items,
+    items : items,
     addItem : cart.addItem.bind(cart),
+    removeItem : cart.removeItem.bind(cart),
+    clearCart : cart.clearCart.bind(cart),
     instanceId : cart.instanceId  
   };
 }
