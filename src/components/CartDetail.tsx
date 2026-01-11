@@ -1,8 +1,10 @@
+// src/components/CartDetail.tsx
+
 import {useCart} from '../features/useCart';
-import type {CartItem} from '../features/cartStore';
+import type {CartLineView} from '../features/useCart';
 
 type ProductProps = {
-    product : CartItem
+    product : CartLineView
 }
 
 export function CartDetail({ product } : ProductProps){
@@ -12,6 +14,8 @@ export function CartDetail({ product } : ProductProps){
         <tr>
             <td>{product.name}</td>
             <td>{product.price}</td>
+            <td>{product.quantity}</td>
+            <td>{product.subtotal}</td>
             <td><button onClick={() => removeItem(product.id)}>
                 Remove from Cart
             </button></td>

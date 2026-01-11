@@ -1,9 +1,11 @@
+// src/components/CartSummary.tsx
+
 import {useCart} from '../features/useCart';
 import {CartDetail} from './CartDetail'
 
 export function CartSummary()
 {
-    const {items, clearCart, instanceId} = useCart();
+    const {lines, clearCart, instanceId} = useCart();
 
     return(
         <div>
@@ -11,11 +13,15 @@ export function CartSummary()
             <table>
                 <thead>
                     <tr>
-                        <th>Product Name</th><th>Price</th><th>Remove</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
-                {items.map(p => (
+                {lines.map(p => (
                         <CartDetail key={p.id} product={p}/>
                       ))}
                 </tbody>

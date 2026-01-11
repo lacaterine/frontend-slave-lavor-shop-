@@ -1,35 +1,51 @@
-//cartStore.ts
+// src/features/cartStore.ts
+
 export type CartItem = {
     id : number;
     name : string;
     price : number;
 };
 
+export type CartLine = {
+    product : CartItem;
+    quantity : number;
+}
+
 type Listener = () => void;
 
 class CartStore {
-    private items: CartItem[] = [];
+    private items: Map<number, CartLine> = new Map();
     private listeners: Listener[] = [];
     readonly instanceId: number = Date.now();
 
-    addItem(item: CartItem)
+    public addItem(item: CartItem)
     {
-        this.items.push(item);
+        const product = this.items.get(item.id);
+        if(product)
+        {
+            product.quantity += 1;
+        } else
+        {
+            this.items.set(item.id, {product: item, quantity: 1});
+        }
         this.notify();
     }
     removeItem(itemId: number)
     {
-        this.items = this.items.filter(item => item.id !== itemId);
+        this.items.delete(itemId);
         this.notify();
     }
     clearCart()
     {
-        this.items = [];
+        this.items.clear();
         this.notify();
     }
-    getItems()
+    /**
+     * Returns domain data — no UI math, no formatting
+     */
+    getLines() : CartLine[]
     {
-        return [...this.items];
+        return Array.from(this.items.values());
     }
     subscribe(listener: Listener)
     {
@@ -40,7 +56,7 @@ class CartStore {
         }
     }
 
-    notify()
+    public notify()
     {
         this.listeners.forEach(l => l());
     }
