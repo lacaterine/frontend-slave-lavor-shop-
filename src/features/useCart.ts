@@ -36,11 +36,13 @@ export function useCart()
   }, [cart]);
   const lineCount = lines.length;
   const isEmpty = lineCount === 0;
+  const canClear = lineCount > 0;
 
   return {
     lines,
     lineCount,
     isEmpty,
+    canClear,
     addItem : cart.addItem.bind(cart),
     removeItem : cart.removeItem.bind(cart),
     clearCart : cart.clearCart.bind(cart),
