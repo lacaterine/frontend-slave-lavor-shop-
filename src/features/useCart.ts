@@ -34,9 +34,13 @@ export function useCart()
     update();
     return cart.subscribe(update);
   }, [cart]);
+  const lineCount = lines.length;
+  const isEmpty = lineCount === 0;
 
   return {
-    lines : lines,
+    lines,
+    lineCount,
+    isEmpty,
     addItem : cart.addItem.bind(cart),
     removeItem : cart.removeItem.bind(cart),
     clearCart : cart.clearCart.bind(cart),
