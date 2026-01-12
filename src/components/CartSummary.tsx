@@ -2,13 +2,20 @@
 
 import {useCart} from '../features/useCart';
 import {CartDetail} from './CartDetail'
+type CartProps = {
+  onClose: () => void;
+};
 
-export function CartSummary()
+export function CartSummary({onClose}: CartProps)
 {
     const {lines, clearCart, instanceId} = useCart();
 
     return(
         <div>
+            <button onClick={onClose}>
+  Close
+</button>
+
             <h2>Cart Summary</h2>
             <table>
                 <thead>

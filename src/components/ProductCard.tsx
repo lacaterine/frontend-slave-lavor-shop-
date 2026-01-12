@@ -1,3 +1,5 @@
+// src/components/ProductCard.tsx
+
 import {useCart} from '../features/useCart';
 import type {CartItem} from '../features/cartStore';
 
