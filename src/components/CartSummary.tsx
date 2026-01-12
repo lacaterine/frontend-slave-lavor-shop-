@@ -1,40 +1,41 @@
 // src/components/CartSummary.tsx
 
-import {useCart} from '../features/useCart';
-import {CartDetail} from './CartDetail'
+import { useCart } from '../features/useCart';
+import { CartDetail } from './CartDetail'
 type CartProps = {
-  onClose: () => void;
+    onClose: () => void;
 };
 
-export function CartSummary({onClose}: CartProps)
-{
-    const {lines, clearCart, instanceId} = useCart();
+export function CartSummary({ onClose }: CartProps) {
+    const { lines, canClear, clearCart } = useCart();
 
-    return(
+    return (
         <div>
             <button onClick={onClose}>
-  Close
-</button>
+                Close
+            </button>
 
-            <h2>Cart Summary</h2>
+            <h2>Cart Contents</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Product Name</th>
+                        <th>Product</th>
                         <th>Price</th>
-                        <th>Quantity</th>
+                        <th>Qty</th>
                         <th>Subtotal</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
-                {lines.map(p => (
-                        <CartDetail key={p.id} product={p}/>
-                      ))}
+                    {lines.map(p => (
+                        <CartDetail key={p.id} product={p} />
+                    ))}
                 </tbody>
             </table>
-            <h2>Cart ID: {instanceId}</h2>
-            <button onClick={() => clearCart()}>
+            <button
+                className="disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={!canClear} 
+                onClick={() => clearCart()}>
                 Empty Cart
             </button>
         </div>

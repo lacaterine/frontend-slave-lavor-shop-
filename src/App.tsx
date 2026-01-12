@@ -6,7 +6,7 @@ import "./index.css";
 import { useCart } from "./features/useCart";
 
 function App() {
-  const { lineCount, isEmpty } = useCart();
+  const { lineCount } = useCart();
 
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -25,7 +25,7 @@ function App() {
   };
 
   return (
-  
+
     <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8">
       <div className="col-span-2">
         {products.map((p) => (
@@ -35,10 +35,9 @@ function App() {
       <button
 
         onClick={toggleCart}
-        className=" fixed top-4 right-4 z-40 text-3xl p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow"
-      >
+        className=" fixed top-4 right-4 z-40 text-3xl p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow">
         🛒
-    
+
         {lineCount > 0 && (
           <span
             className="
@@ -49,11 +48,9 @@ function App() {
         px-2 py-0.5
         min-w-[1.25rem]
         text-center
-      "
-          
-          >
+      ">
             {lineCount}
-            
+
           </span>
         )}
       </button>
@@ -69,7 +66,6 @@ function App() {
               z-50
               transform transition-transform duration-700 ease-in-out
               ${isCartOpen ? "translate-x-0" : "translate-x-full"}
-              ${isEmpty ? "bg-gray-100" : "bg-slate-900 text-white"}
             `}
       >
         <CartSummary onClose={closeCart} />
