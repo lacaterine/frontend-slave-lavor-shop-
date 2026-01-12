@@ -38,6 +38,7 @@ function App() {
         className=" fixed top-4 right-4 z-40 text-3xl p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow"
       >
         🛒
+    
         {lineCount > 0 && (
           <span
             className="
@@ -49,19 +50,22 @@ function App() {
         min-w-[1.25rem]
         text-center
       "
+          
           >
             {lineCount}
+            
           </span>
         )}
       </button>
 
       <div
         className={`
-          bg-white text-gray-900
-         dark:bg-gray-900 dark:text-gray-100
+             bg-white text-gray-900
+             dark:bg-gray-900 dark:text-gray-100
               fixed top-0 right-0
               h-screen w-80
-              shadow-lg
+              m-2 p-6 
+              rounded-xl shadow-lg
               z-50
               transform transition-transform duration-700 ease-in-out
               ${isCartOpen ? "translate-x-0" : "translate-x-full"}
