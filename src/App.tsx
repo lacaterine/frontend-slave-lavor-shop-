@@ -8,18 +8,8 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const products = [
-    { id: 1, name: "Collar", price: "$10" },
-    { id: 2, name: "Collar", price: "$22" },
-    { id: 3, name: "Collar", price: "$2" },
-    { id: 4, name: "Collar", price: "$2" },
-    { id: 5, name: "Collar", price: "$2" },
-    { id: 6, name: "Collar", price: "$2" },
-    { id: 7, name: "Collar", price: "$2" },
-    { id: 8, name: "Collar", price: "$2" },
-    { id: 9, name: "Collar", price: "$2" },
-    { id: 10, name: "Collar", price: "$2" },
-    { id: 11, name: "Collar", price: "$2" },
-    { id: 12, name: "Collar", price: "$2" },
+    { id: 1, name: "Collar", price: 20, image: "assets/imagine/collar1.jpg" },
+    { id: 2, name: "Leash", price: 15, image: "assets/imagine/leash1.jpg" }
   ];
 
   return (
