@@ -3,13 +3,24 @@ import { CartSummary } from "./components/CartSummary";
 import { Navbar } from "./components/Navbar";
 import { useState } from "react";
 import "./index.css";
+import ChokerImg from "./assets/products/Choker.jpg";
+import CisneNegroImg from "./assets/products/CisneNegro.jpg";
+import MuteImg from "./assets/products/Mute.jpg";
+import ViciousImg from "./assets/products/Vicious.jpg";
+
+
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const products = [
-    { id: 1, name: "Collar", price: 20, image: "assets/imagine/collar1.jpg" },
-    { id: 2, name: "Leash", price: 15, image: "assets/imagine/leash1.jpg" }
+    { id: 1, name: "Choker", price: 20, image: ChokerImg },
+    { id: 2, name: "Cisne Negro", price: 15, image: CisneNegroImg },
+    { id: 3, name: "Mute", price: 15, image: MuteImg },
+    { id: 4, name: "Vicious", price: 15, image: ViciousImg },
+
+
+
   ];
 
   return (
