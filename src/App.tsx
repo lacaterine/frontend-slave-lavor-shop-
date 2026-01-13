@@ -1,76 +1,55 @@
-import { ProductCard } from "./components/ProductCard.tsx";
-import { CartSummary } from "./components/CartSummary.tsx";
+import { ProductCard } from "./components/ProductCard";
+import { CartSummary } from "./components/CartSummary";
+import { Navbar } from "./components/Navbar";
 import { useState } from "react";
-
 import "./index.css";
-import { useCart } from "./features/useCart";
 
 function App() {
-  const { lineCount } = useCart();
-
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const products = [
-    { id: 1, name: "book", price: 10 },
-    { id: 2, name: "desk", price: 22 },
-    { id: 3, name: "pencil", price: 2 },
+    { id: 1, name: "Collar", price: "$10" },
+    { id: 2, name: "Collar", price: "$22" },
+    { id: 3, name: "Collar", price: "$2" },
+    { id: 4, name: "Collar", price: "$2" },
+    { id: 5, name: "Collar", price: "$2" },
+    { id: 6, name: "Collar", price: "$2" },
+    { id: 7, name: "Collar", price: "$2" },
+    { id: 8, name: "Collar", price: "$2" },
+    { id: 9, name: "Collar", price: "$2" },
+    { id: 10, name: "Collar", price: "$2" },
+    { id: 11, name: "Collar", price: "$2" },
+    { id: 12, name: "Collar", price: "$2" },
   ];
 
-  const toggleCart = () => {
-    setIsCartOpen((open) => !open);
-  };
-
-  const closeCart = () => {
-    setIsCartOpen(false);
-  };
-
   return (
+    <>
+      <Navbar onCartClick={() => setIsCartOpen(true)} />
 
-    <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8">
-      <div className="col-span-2">
-        {products.map((p) => (
-          <ProductCard key={p.id} product={p} />
-        ))}
-      </div>
-      <button
+      {/* Spacer for fixed navbar */}
+      <main className="pt-20 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {products.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </main>
 
-        onClick={toggleCart}
-        className=" fixed top-4 right-4 z-40 text-3xl p-3 rounded-full shadow-lg hover:shadow-xl transition-shadow">
-        🛒
-
-        {lineCount > 0 && (
-          <span
-            className="
-        absolute -top-2 -right-2
-        bg-blue-600 text-white
-        text-xs font-semibold
-        rounded-full
-        px-2 py-0.5
-        min-w-[1.25rem]
-        text-center
-      ">
-            {lineCount}
-
-          </span>
-        )}
-      </button>
-
+      {/* Cart Drawer */}
       <div
         className={`
-             bg-white text-gray-900
-             dark:bg-gray-900 dark:text-gray-100
-              fixed top-0 right-0
-              h-screen w-80
-              m-2 p-6 
-              rounded-xl shadow-lg
-              z-50
-              transform transition-transform duration-700 ease-in-out
-              ${isCartOpen ? "translate-x-0" : "translate-x-full"}
-            `}
+          fixed top-0 right-0
+          h-screen w-80
+          bg-white
+          shadow-lg
+          z-50
+          transform transition-transform duration-500 ease-in-out
+          ${isCartOpen ? "translate-x-0" : "translate-x-full"}
+        `}
       >
-        <CartSummary onClose={closeCart} />
+        <CartSummary onClose={() => setIsCartOpen(false)} />
       </div>
-    </div>
+    </>
   );
 }
 
