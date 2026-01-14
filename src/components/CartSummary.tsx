@@ -16,14 +16,14 @@ export function CartSummary({ onClose }: CartProps) {
             </button>
 
             <h2>Cart Contents</h2>
-            <table>
-                <thead>
+            <table className="w-full text-slate-900 dark:text-slate-700">
+                <thead className="border-b border-slate-200 dark:text-slate-700">
                     <tr>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                        <th>Subtotal</th>
-                        <th>Remove</th>
+                        <th className="text-left py-2">Product</th>
+                        <th className="text-left py-2">Price</th>
+                        <th className="text-left py-2">Qty</th>
+                        <th className="text-left py-2">Subtotal</th>
+                        <th className="text-left py-2">Remove</th>
                     </tr>
                 </thead>
                 <tbody>

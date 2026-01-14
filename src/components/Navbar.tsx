@@ -1,4 +1,10 @@
 import { useCart } from "../features/useCart";
+import { useI18n } from "../features/useI18n";
+import { LanguageSwitch } from "./LanguageSwitch";
+
+
+const { t } = useI18n();
+
 
 type NavbarProps = {
   onCartClick: () => void;
@@ -6,11 +12,22 @@ type NavbarProps = {
 
 export function Navbar({ onCartClick }: NavbarProps) {
   const { lineCount } = useCart();
+  
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-16 bg-slate-900 text-white flex items-center justify-between px-6 z-50 shadow-md">
-      <h1 className="text-xl font-semibold">My Store</h1>
+    <nav className="
+      fixed top-0 left-0 w-full h-16
+      bg-gray-950 text-white
+      flex items-center justify-between
+      px-6 z-50 shadow-md">
+        <h1 className="text-xl font-semibold tracking-wide">{t("store_title")}</h1>
 
+     
+      {/* Language Toggle */}
+    <div className=" flex items-center gap-4">
+        <LanguageSwitch />
+
+      {/* Icon Cart Toggle*/}
       <button
         onClick={onCartClick}
         className="relative text-2xl hover:scale-110 transition-transform"
@@ -18,11 +35,11 @@ export function Navbar({ onCartClick }: NavbarProps) {
         🛒
         {lineCount > 0 && (
           <span className="
-            absolute -top-2 -right-2
-            bg-blue-600 text-white
+            absolute -top-0 -right-2
+            bg-red-700 text-white
             text-xs font-semibold
             rounded-full
-            px-2 py-0.5
+            px-2 py-2
             min-w-[1.25rem]
             text-center
           ">
@@ -30,6 +47,7 @@ export function Navbar({ onCartClick }: NavbarProps) {
           </span>
         )}
       </button>
+    </div>
     </nav>
   );
 }

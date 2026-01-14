@@ -11,6 +11,7 @@ export function CartDetail({ product } : ProductProps){
     const {removeItem} = useCart();
 
     return(
+        
         <tr>
             <td>{product.name}</td>
             <td>{product.price}</td>

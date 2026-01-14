@@ -41,9 +41,12 @@ function App() {
         className={`
           fixed top-0 right-0
           h-screen w-80
-          bg-white
-          shadow-lg
+          bg-white text-gray-950
+          dark:bg-white dark:text-gray-100
+          shadow-xl
           z-50
+          p-6
+          rounded-l-xl          
           transform transition-transform duration-500 ease-in-out
           ${isCartOpen ? "translate-x-0" : "translate-x-full"}
         `}
