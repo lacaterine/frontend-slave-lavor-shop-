@@ -2,7 +2,7 @@
 
 import { useCart } from "../features/useCart";
 import type { CartItem } from "../features/cartStore";
-import {useI18n} from "../features/useI18n";
+import { useI18n } from "../features/I18nProvider"; 
 
 type ProductProps = {
   product: CartItem;

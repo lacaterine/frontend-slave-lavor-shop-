@@ -1,5 +1,5 @@
-import {en} from './en';
-import {es} from './es';
+import { en } from "./en";
+import { es } from "./es";
 
-export const translations = {es, en}; 
-export type Language = keyof typeof translations; 
+export const translations = { en, es };
+export type Language = keyof typeof translations;

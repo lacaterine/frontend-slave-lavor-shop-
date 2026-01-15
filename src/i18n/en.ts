@@ -3,6 +3,7 @@ export const en = {
   add_to_cart: "Add to Cart",
   cart_title: "Cart Contents",
   close: "Close",
+  checkout: "Checkout",       
   empty_cart: "Empty Cart",
   product: "Product",
   price: "Price",
