@@ -1,3 +1,4 @@
+// src/components/CartSummary.tsx
 import { useCart } from "../features/useCart";
 import { CartDetail } from "./CartDetail";
 import { useI18n } from "../features/I18nProvider"; // context-based hook

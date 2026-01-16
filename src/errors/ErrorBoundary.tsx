@@ -1,26 +1,30 @@
-import React from 'react';
+import React from "react";
 
-type State = {error?: Error};
+type Props = React.PropsWithChildren & {
+  onError?: (error: Error) => void;
+};
 
-export class ErrorBoundary 
-    extends React.Component<React.PropsWithChildren, State>
-{
-    state: State = {};
+type State = { error?: Error };
 
-    static getDerivedStateFromError(error: Error){
-        return {error};
+export class ErrorBoundary extends React.Component<Props, State> {
+  state: State = {};
+
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
+
+  componentDidCatch(error: Error) {
+    if (this.props.onError) {
+      this.props.onError(error);
     }
+  }
 
-    reset = () => { this.setState({error: undefined})};
-    
-    render()
-    {
-        if(this.state.error)
-        {
-            return(
-                <>"Something Happened and it's not good..."</>
-            );
-        }
-        return this.props.children;
+  reset = () => this.setState({ error: undefined });
+
+  render() {
+    if (this.state.error) {
+      return null; // fallback is handled by parent via ErrorModal
     }
+    return this.props.children;
+  }
 }

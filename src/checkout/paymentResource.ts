@@ -1,20 +1,25 @@
 import { connectToPaymentGateway } from "./fakePaymentApi";
 
-let status = "pending";
-let result: unknown;
+export function createPaymentResource(t: (key: string) => string) {
+  let status: "pending" | "success" | "error" = "pending";
+  let result: unknown;
 
-const suspender = connectToPaymentGateway().then(
-  r => {
-    status = "success";
-    result = r;
-  },
-  e => {
-    status = "error";
-    result = e;
-  }
-);
+  const suspender = connectToPaymentGateway(t).then(
+    (r) => {
+      status = "success";
+      result = r;
+    },
+    (e) => {
+      status = "error";
+      result = e;
+    }
+  );
 
-export function readPayment() {
-  if (status === "pending") throw suspender;
-  if (status === "error") throw result;
+  return {
+    read() {
+      if (status === "pending") throw suspender;
+      if (status === "error") throw result;
+      return result;
+    },
+  };
 }
