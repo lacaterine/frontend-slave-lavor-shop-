@@ -13,5 +13,7 @@ export const en = {
   price: "Price",
   qty: "Qty",
   subtotal: "Subtotal",
+  items: "Items",
+  total: "Total",
   remove: "Remove",
 };

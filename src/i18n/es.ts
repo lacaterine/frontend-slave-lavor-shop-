@@ -13,5 +13,7 @@ export const es = {
   price: "Precio",
   qty: "Cant.",
   subtotal: "Subtotal",
+  items: "Artículos",
+  total: "Total",
   remove: "Eliminar",
 };
